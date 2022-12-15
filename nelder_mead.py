@@ -52,8 +52,8 @@ def init(f, x_start, alpha):
     previous_best = f(x_start)
     simplex = [[x_start, previous_best]]
 
-    delta1 = (np.sqrt(dim + 1) + dim - 1) * alpha / (dim * np.sqrt(2))
-    delta2 = (np.sqrt(dim + 1) - 1) * alpha / (dim * np.sqrt(2))
+    delta1 = (np.sqrt(dim + 1) + dim - 1) * alpha / float(dim * np.sqrt(2))
+    delta2 = (np.sqrt(dim + 1) - 1) * alpha / float(dim * np.sqrt(2))
 
     for i in range(dim):
         x = copy.copy(x_start)
@@ -77,7 +77,7 @@ def calculate_centroid(simplex):
     centroid = [0.] * dim
     for current_x, _ in simplex[:-1]:
         for i, c in enumerate(current_x):
-            centroid[i] += c / (len(simplex) - 1)
+            centroid[i] += c / float(len(simplex) - 1)
     return centroid
 
 
